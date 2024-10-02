@@ -8,6 +8,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseHttpsRedirection();
 
 var summaries = new[]
@@ -34,8 +37,8 @@ app.MapGet("/weatherforecast", () =>
 app.MapPost("/quote-of-the-day", ([FromBody] QuoteRequest request) =>
 {
     var quotes = new Quote().QuotesList();
-    var quoteId = Random.Shared.Next(1,10);
-    var selectedQuote = quotes.FirstOrDefault(x=>x.Id == quoteId);
+    var quoteId = Random.Shared.Next(1, 10);
+    var selectedQuote = quotes.FirstOrDefault(x => x.Id == quoteId);
     var newQuote = $"Hi, {request.Name}. {selectedQuote?.Description}";
     return newQuote;
 })

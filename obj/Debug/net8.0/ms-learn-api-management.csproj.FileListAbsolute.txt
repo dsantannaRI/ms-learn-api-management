@@ -31,3 +31,4 @@ C:\Development\Personal\ms-learn-api-management\obj\Debug\net8.0\refint\ms-learn
 C:\Development\Personal\ms-learn-api-management\obj\Debug\net8.0\ms-learn-api-management.pdb
 C:\Development\Personal\ms-learn-api-management\obj\Debug\net8.0\ms-learn-api-management.genruntimeconfig.cache
 C:\Development\Personal\ms-learn-api-management\obj\Debug\net8.0\ref\ms-learn-api-management.dll
+C:\Development\Personal\ms-learn-api-management\obj\Debug\net8.0\ms-learn-api-management.sourcelink.json
