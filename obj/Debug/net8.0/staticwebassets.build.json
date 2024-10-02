@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7lFKAft2DH8bpexkfV2dYXCPffC5PpiNy1MT5agpZvQ=",
+  "Source": "ms-learn-api-management",
+  "BasePath": "_content/ms-learn-api-management",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,6 @@
+@ms_learn_api_management_HostAddress = http://localhost:5044
+
+GET {{ms_learn_api_management_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
