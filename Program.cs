@@ -1,11 +1,16 @@
 using Api.Quote;
 using Microsoft.AspNetCore.Mvc;
+using ms_learn_api_management.Data;
+using Microsoft.EntityFrameworkCore;
+using Api.User;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
+// builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 var app = builder.Build();
 
 app.UseSwagger();
@@ -45,6 +50,20 @@ app.MapPost("/quote-of-the-day", ([FromBody] QuoteRequest request) =>
 .WithName("GetQuoteOfTheDay")
 .WithOpenApi();
 
+app.MapPost("/create-user", (
+    [FromBody] CreateUserRequest request,
+    IValidator<CreateUserRequest> validator
+) =>
+{
+    var validationResult = validator.Validate(request);
+    if (!validationResult.IsValid)
+    {
+        var errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
+        return Results.BadRequest(errors);
+    }
+    return Results.Ok();
+});
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
@@ -76,5 +95,31 @@ namespace Api.Quote
             };
         }
     }
+    public record QuoteRequest(string Name);
 }
-public record QuoteRequest(string Name);
+
+namespace Api.User
+{
+    public class User
+    {
+        public int Id { get; set; }
+        public string FullName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+    }
+
+    public record CreateUserRequest(string FullName, string Email);
+    public record UserDto(string FullName, string Email);
+
+    public class CreateUserValidator : AbstractValidator<CreateUserRequest>
+    {
+        public CreateUserValidator()
+        {
+            RuleFor(x => x.FullName)
+            .Length(3, 100).WithMessage("FullName must be between 3 and 100 characters")
+            .NotNull().WithMessage("FullName can't be null");
+
+
+            RuleFor(x => x.Email).EmailAddress().WithMessage("Please, provide a valid email");
+        }
+    }
+}
