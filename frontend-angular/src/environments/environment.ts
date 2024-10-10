@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:5044"
+  apiUrl: "https://ms-learn-demo-api-management.azure-api.net"
 };
