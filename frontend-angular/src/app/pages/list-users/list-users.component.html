@@ -1,0 +1,22 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Full name
+      </th>
+      <th>
+        Email
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (item of userList(); track $index) {
+        <tr>
+          <td>{{ item.fullName }}</td>
+          <td>{{ item.email }}</td>
+        </tr>
+        }
+  </tbody>
+</table>

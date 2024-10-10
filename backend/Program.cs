@@ -11,6 +11,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
 builder.Services.AddScoped<IValidator<CreateUserRequest>, CreateUserValidator>();
+builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(name: "Policy",
+                            policy =>
+                            {
+                                policy.AllowAnyOrigin();
+                                policy.AllowAnyHeader();
+                                policy.AllowAnyMethod();
+                            });
+        });
 var app = builder.Build();
 
 app.UseSwagger();
@@ -98,6 +108,8 @@ using (var scope = app.Services.CreateScope())
         context.SeedUsers();
     }
 }
+
+app.UseCors("Policy");
 
 app.Run();
 
