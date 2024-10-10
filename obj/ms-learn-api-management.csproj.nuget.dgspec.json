@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj": {}
+    "c:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj": {}
   },
   "projects": {
-    "C:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj": {
+    "c:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
+        "projectUniqueName": "c:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
         "projectName": "ms-learn-api-management",
-        "projectPath": "C:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
+        "projectPath": "c:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
         "packagesPath": "C:\\Users\\Douglas Sant'Anna\\.nuget\\packages\\",
-        "outputPath": "C:\\Development\\ms-learn-api-management\\obj\\",
+        "outputPath": "c:\\Development\\ms-learn-api-management\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

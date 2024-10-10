@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8+iwvrWRhJ1jqesOR29KK0fakvy/VL4+czdLdDE6P54JnKAM1Zyak4X2vmnx3lHNVwxys96UmaZj6frwUQ+w5g==",
+  "dgSpecHash": "UHktta/Ag0yLA/abhnP/YCTP9TCFwmwCxPkZJd2OE0zmJSqODj8CpFK52ieP55DblmcVJ/guofB7262XQ/oL1w==",
   "success": true,
-  "projectFilePath": "C:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
+  "projectFilePath": "c:\\Development\\ms-learn-api-management\\ms-learn-api-management.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Douglas Sant'Anna\\.nuget\\packages\\fluentvalidation\\11.10.0\\fluentvalidation.11.10.0.nupkg.sha512",
     "C:\\Users\\Douglas Sant'Anna\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.3\\microsoft.aspnetcore.openapi.8.0.3.nupkg.sha512",

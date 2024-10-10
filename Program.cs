@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(opt => opt.UseInMemoryDatabase("Database"));
-// builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddScoped<IValidator<CreateUserRequest>, CreateUserValidator>();
 var app = builder.Build();
 
 app.UseSwagger();
@@ -50,9 +50,10 @@ app.MapPost("/quote-of-the-day", ([FromBody] QuoteRequest request) =>
 .WithName("GetQuoteOfTheDay")
 .WithOpenApi();
 
-app.MapPost("/create-user", (
+app.MapPost("/create-user", async (
     [FromBody] CreateUserRequest request,
-    IValidator<CreateUserRequest> validator
+    IValidator<CreateUserRequest> validator,
+    DataContext context
 ) =>
 {
     var validationResult = validator.Validate(request);
@@ -61,8 +62,42 @@ app.MapPost("/create-user", (
         var errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
         return Results.BadRequest(errors);
     }
-    return Results.Ok();
+
+    var newUser = new User
+    {
+        FullName = request.FullName,
+        Email = request.Email
+    };
+
+    try
+    {
+        await context.Users.AddAsync(newUser);
+        await context.SaveChangesAsync();
+        return Results.Ok();
+    }
+    catch (System.Exception)
+    {
+        return Results.BadRequest();
+    }
 });
+
+app.MapGet("/get-users", async (
+    DataContext context
+) =>
+{
+    var users = await context.Users.ToListAsync();
+    return Results.Ok(users);
+});
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+    
+    if (!context.Users.Any())
+    {
+        context.SeedUsers();
+    }
+}
 
 app.Run();
 
