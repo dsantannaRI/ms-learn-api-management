@@ -1,8 +1,8 @@
 name: Web Api
 env:
   AZURE_WEBAPP_NAME: ms-learn-api-management
-  AZURE_WEBAPP_PACKAGE_PATH: "ms-learn-api-management.csproj"
-  SOLUTION: "ms-learn-api-management.sln"
+  AZURE_WEBAPP_PACKAGE_PATH: "backend/ms-learn-api-management.csproj"
+  SOLUTION: "backend/ms-learn-api-management.sln"
 
 on:
   workflow_dispatch:
