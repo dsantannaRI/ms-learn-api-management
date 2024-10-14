@@ -38,4 +38,4 @@ jobs:
           action: "upload"
           app_location: "/frontend-angular"
           api_location: ""
-          output_location: "dist/frontend-angular/browser"
+          output_location: "dist/frontend-angular"
